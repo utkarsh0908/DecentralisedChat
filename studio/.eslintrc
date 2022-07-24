@@ -1,0 +1,4 @@
+{
+  "extends": "@sanity/eslint-config-studio",
+  "plugins": ["@babel/preset-env"]
+}
