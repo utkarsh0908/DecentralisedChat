@@ -20,7 +20,7 @@ const sidebar = () => {
       const data = await response.json()
       setChannels(data)
 
-      router.push(`/?channel=${data[0].roomId}&name=${data[0].roomName}`)
+      router.push(`?channel=${data[0].roomId}&name=${data[0].roomName}&avatar=${data[0].avatar}`)
     } catch (error) {
         console.error(error)
     }
@@ -39,7 +39,7 @@ const sidebar = () => {
             <Room
               key = {index}
               id = {channel.roomId}
-              avatar = {channel.avatar ? channel.avatar : def}
+              avatar = {channel.avatar ? channel.avatar :  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3OCSMFIW5fZ3vSN6yGpD-w-6SsL2_ZPA_sw&usqp=CAU'}
               name = {channel.roomName}
             />
           ))}

@@ -4,7 +4,7 @@ import { useRouter } from "next/router"
 const room = ({id, avatar, name}) => {
     const router = useRouter();
     const changeURL = () => {
-        router.push(`?channel=${id}&name=${name}`)
+        router.push(`?channel=${id}&name=${name}&avatar=${avatar}`)
     }
   return (
     <div>

@@ -1,9 +1,21 @@
 import { useContext } from "react"
 import {ChatContext} from '../context/context'
 import MessageCard from '../components/messageCard'
+import Image from 'next/image'
+import { useRouter } from "next/router"
 
 const chatview = () => {
-  const { state } = useContext(ChatContext)
+  const router = useRouter()
+  const {avatar} = router.query
+  const { 
+    state, 
+    messageText,
+    setMessageText,
+    placeholder,
+    gun,
+    roomName,
+    currentAccount,
+    currentUser, } = useContext(ChatContext)
 
   const formattedMessagesArray = () => {
     const uniqueArray = state.messages.filter((value, index) => {
@@ -19,15 +31,6 @@ const chatview = () => {
 
     return uniqueArray
   }
-  const {
-        messageText,
-        setMessageText,
-        placeholder,
-        gun,
-        roomName,
-        currentAccount,
-        currentUser,
-      } = useContext(ChatContext)
 
       const sendMessage = event => {
         event.preventDefault()
@@ -41,7 +44,7 @@ const chatview = () => {
             ? currentUser.avatar
             : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3OCSMFIW5fZ3vSN6yGpD-w-6SsL2_ZPA_sw&usqp=CAU',
           content: messageText.trim(),
-          createdAt: Date().substring(4, 11),
+          createdAt: Date().substring(17, 21),
           messageId: Date.now(),
         }
     
@@ -51,7 +54,10 @@ const chatview = () => {
 
   return (
     <div className="flex flex-col h-[92%] w-[65%] border-l-2 border-[#9b9b9b62] overflow-y-scroll scrollbar-hidden">
-      <div className='fixed top-4 p-4 flex flex-row justify-between items-center bg-[#e9e9e9] h-20 w-[65%] rounded-tr'>
+      <div className='fixed top-4 p-4 flex flex-row items-center bg-[#f0f2f5] h-20 w-[65%] rounded-tr'>
+        <div className="">
+          <img src={avatar} alt = "logo" className=" object-cover h-10 w-10  rounded-full mr-2"/>
+        </div>
         {roomName}
       </div>
       <div className="mt-20">

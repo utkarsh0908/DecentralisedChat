@@ -38,7 +38,6 @@ export const ChatProvider = ({children}) => {
                 const response = await fetch(
                     `${process.env.NEXT_PUBLIC_API_URL}/getCurrentUserData?account=${currentAccount}`,
                     )
-                    
                     const data = await response.json()
                     setCurrentUser(data)
                 } catch (error) {

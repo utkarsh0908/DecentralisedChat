@@ -1,4 +1,3 @@
-import Image from "next/image"
 import { BsThreeDotsVertical } from 'react-icons/bs'
 import { FaEthereum } from 'react-icons/fa'
 import { useContext } from "react"
@@ -8,12 +7,12 @@ const navbar = ({profile}) => {
   const {roomname, currentAccount, connectWallet} = useContext(ChatContext)
   return (
     <div className="border-b-2">
-    <div className="text-xl bg-[#f7f7f7]">
+    <div className="text-xl bg-[#f0f2f5]">
 
     <div className='p-2 flex flex-row justify-between items-center'>
       
       {currentAccount ? (
-      <div className="border border-black rounded-3xl flex items-center p-2 text-base bg-[#dbdbdb] cursor-pointer">
+      <div className="border border-black rounded-3xl flex items-center p-2 text-base bg-[#dcdee0] cursor-pointer">
           <div><FaEthereum/></div>
           <span>{'|'}</span>
           {currentAccount.slice(0, 6)}...{currentAccount.slice(39)}

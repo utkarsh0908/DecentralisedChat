@@ -6,16 +6,12 @@ import { ChatContext } from "../context/context"
 import { useRouter } from 'next/router'
 
 export default function Home() {
-  const {roomname, currentAccount, connectWallet} = useContext(ChatContext)
+  const {currentAccount} = useContext(ChatContext)
   const router = useRouter()
 
   useEffect(()=>{
-    {currentAccount ? (
-      router.push('/')
-    ) : (
-      router.push('/login')
-    )}
-  }, [])
+      !currentAccount ? router.push('login') : router.push('/')
+  }, [currentAccount])
 
   return (
     <div className="flex justify-center items-center p-4 h-screen bg-[url('/bg.svg')] bg-cover bg-no-repeat">
